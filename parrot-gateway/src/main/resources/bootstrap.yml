@@ -1,0 +1,48 @@
+
+spring:
+  application:
+    name: parrot-gateway
+  profiles:
+    active: dev
+---
+# profiles: dev
+spring:
+  profiles: dev
+  cloud:
+    # Nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: parrot-dev
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: parrot-dev
+---
+# profiles: test
+spring:
+  profiles: test
+  cloud:
+    # Nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: parrot-test
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: parrot-test
+---
+# profiles: prod
+spring:
+  profiles: prod
+  cloud:
+    # Nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: parrot-prod
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: parrot-prod

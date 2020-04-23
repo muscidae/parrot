@@ -1,0 +1,15 @@
+# Apollo
+app:
+  id: parrot-registry
+apollo:
+  meta: http://127.0.0.1:8080 # 连接地址
+#  bootstrap:
+#    enabled: true # 开启注入默认 application namespace 的配置
+#    namespaces: application.yml # 注入非默认 application namespace 或多个 namespace 的配置
+
+server:
+  port: 4999
+
+# Nacos
+
+

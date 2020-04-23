@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.muscidae.parrot</groupId>
+        <artifactId>parrot-common</artifactId>
+        <version>${parrot.version}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>parrot-standard</artifactId>
+
+    <name>parrot-standard</name>
+    <description>SuperStandard</description>
+
+    <dependencies>
+
+        <!-- Spring-Web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Parrot-Constant -->
+        <dependency>
+            <groupId>com.muscidae.parrot</groupId>
+            <artifactId>parrot-constant</artifactId>
+        </dependency>
+
+        <!-- Parrot-Entity -->
+        <dependency>
+            <groupId>com.muscidae.parrot</groupId>
+            <artifactId>parrot-entity</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

@@ -1,0 +1,17 @@
+server:
+  port: 4000
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 开启服务注册和发现的功能,且springCloud Gateway自动根据服务发现为每一个服务创建了一个router,这个router将以服务名开头的请求路径转发到对应的服务
+          enabled: true
+      routes:
+        - id: parrot-sleuth
+          uri: lb://parrot-sleuth
+          predicates:
+            - Path=/sleuth/**
+          filters:
+            - StripPrefix=1

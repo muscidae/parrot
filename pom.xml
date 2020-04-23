@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.6.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.muscidae.parrot</groupId>
+    <artifactId>parrot</artifactId>
+    <version>${parrot.version}</version>
+    <packaging>pom</packaging>
+
+    <name>parrot</name>
+    <inceptionYear>2018</inceptionYear>
+    <url>https://gitee.com/muscidae/parrot</url>
+    <description>
+        May the Chinese youth get rid of the cold air,
+        just go up, do not have to listen to the words of self-destruction.
+        I can do things, and I can make a sound. There is a heat and a light.
+        It makes the fireflies generally, and you can also send a little light in the dark without waiting for the torch.
+        If there is no torch after that, I am the only light!
+    </description>
+
+    <scm>
+        <url>https://gitee.com/muscidae/parrot</url>
+        <connection>scm:git:https://gitee.com/muscidae/parrot.git</connection>
+        <developerConnection>scm:git:https://gitee.com/muscidae/parrot.git</developerConnection>
+        <tag>parrot-${parrot.version}</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitEE</system>
+        <url>https://gitee.com/muscidae/parrot/issues</url>
+    </issueManagement>
+
+    <organization>
+        <name>phalacrocorax</name>
+        <url>https://gitee.com/phalacrocorax</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>To be expected...</name>
+            <url>https://#</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>GuangdongJackyCheung</name>
+            <email>muscidae@qq.com</email>
+            <organization>phalacrocorax</organization>
+            <organizationUrl>https://#</organizationUrl>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>GuangdongJackyCheung</name>
+            <email>muscidae@qq.com</email>
+        </contributor>
+    </contributors>
+
+    <properties>
+
+        <!-- Parent Version -->
+        <parrot.version>1.0.0-SNAPSHOT</parrot.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+
+        <!-- Dependency Version -->
+        <apollo.version>1.4.0</apollo.version>
+        <mybatis-plus.version>3.3.0</mybatis-plus.version>
+        <fastjson.version>1.2.66</fastjson.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <swagger.version>1.5.22</swagger.version>
+        <springfox.version>2.9.2</springfox.version>
+        <rocketmq.version>4.7.0</rocketmq.version>
+
+        <!-- Environment Settings -->
+        <jdk.version>${java.specification.version}</jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Plugin Version -->
+        <dockerfile-plugin-version>1.4.13</dockerfile-plugin-version>
+
+    </properties>
+
+    <modules>
+
+        <module>parrot-build</module>
+
+        <module>parrot-common</module>
+
+        <!-- @deprecated -->
+        <module>parrot-config</module>
+
+        <module>parrot-dependencies</module>
+
+        <module>parrot-gateway</module>
+
+        <!-- @deprecated -->
+        <module>parrot-registry</module>
+
+        <module>parrot-rpc</module>
+
+        <module>../parrot-example</module>
+
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>global-java 8+</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                    <optional>true</optional>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                    <optional>true</optional>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+    <dependencies>
+
+        <!-- SpringBoot-Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- region JDK Version Manager -->
+
+            <!-- endregion -->
+
+            <!-- region SpringCloud Version Manager  -->
+
+            <!-- SpringCloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- SpringCloud-Alibaba -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- endregion -->
+
+            <!-- region Exclusions Manager  -->
+
+            <!-- SpringBoot-Web -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-json</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-models</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
+            <!-- endregion -->
+
+            <!-- region Parrot Version Manager  -->
+
+            <!-- Parrot-Basic -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parrot-basic</artifactId>
+                <version>${parrot.version}</version>
+            </dependency>
+
+            <!-- Parrot-Bean -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parrot-bean</artifactId>
+                <version>${parrot.version}</version>
+            </dependency>
+
+            <!-- Parrot-Constant -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parrot-constant</artifactId>
+                <version>${parrot.version}</version>
+            </dependency>
+
+            <!-- Parrot-Entity -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parrot-entity</artifactId>
+                <version>${parrot.version}</version>
+            </dependency>
+
+            <!-- Parrot-Standard -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parrot-standard</artifactId>
+                <version>${parrot.version}</version>
+            </dependency>
+
+            <!-- Parrot-Util -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parrot-util</artifactId>
+                <version>${parrot.version}</version>
+            </dependency>
+
+            <!-- Parrot-Rpc -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parrot-rpc</artifactId>
+                <version>${parrot.version}</version>
+            </dependency>
+
+            <!-- endregion -->
+
+            <!-- region Version Manager  -->
+
+            <!-- Apollo-Client -->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo.version}</version>
+            </dependency>
+
+            <!-- Mybatis-Plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- Mybatis-Plus-Annotation -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- FastJson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- JJwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!-- Swagger-Models -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- Swagger-Annotations -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- Swagger-Ui -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+
+            <!-- RocketMQ -->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+
+            <!-- endregion -->
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+
+                <!-- Compiler Plugin -->
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <showWarnings>true</showWarnings>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>build-info</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>copy-dependencies</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>copy-resources</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <resources>
+                                    <resource>
+                                        <directory>src/main/resources</directory>
+                                    </resource>
+                                </resources>
+                                <outputDirectory>${project.build.directory}/resources</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile-plugin-version}</version>
+                    <executions>
+                        <execution>
+                            <id>dockerfile</id>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <repository>parrot</repository>
+                        <tag>${project.version}</tag>
+                        <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                        <buildArgs>
+                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+    <repositories>
+
+        <!-- Aliyun -->
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <!-- Spring-Milestones -->
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
+
+
+    <pluginRepositories>
+
+        <pluginRepository>
+            <id>aliyun-repos</id>
+            <name>Aliyun Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+
+    </pluginRepositories>
+
+</project>

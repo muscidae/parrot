@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 指定数据库驱动包路径 -->
+    <classPathEntry location="D:\Maven-Repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar"/>
+
+    <!-- targetRuntime: MyBatis3:*默认值* MyBatis3Simple Ibatis2Java2 Ibatis2Java5 -->
+    <context id="default" targetRuntime="MyBatis3">
+        <!-- 自动识别数据库关键字, 默认false, 如果设置为true, 根据SqlReservedWords中定义的关键字列表;
+             一般保留默认值, 遇到数据库关键字(Java关键字), 使用columnOverride覆盖 -->
+        <property name="autoDelimitKeywords" value="false"/>
+        <!-- 生成Java文件编码格式 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <!--<property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>-->
+        <!-- 格式化XML代码 -->
+        <!--<property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>-->
+        <!-- 数据库字段关键字转译符处理, 前置和后置对应处理 -->
+        <property name="beginningDelimiter" value="`"/><property name="endingDelimiter" value="`"/>
+
+        <commentGenerator type="">
+            <!-- 是否去除自动生成的注释及时间戳 -->
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection
+                driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/parrot_pay?useUnicode=true&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;characterEncoding=utf8"
+                userId="root"
+                password="">
+        </jdbcConnection>
+
+        <!-- Model模型生成器,用来生成含有主键key的类 -->
+        <javaModelGenerator targetPackage="com.muscidae.parrot.entity"
+                            targetProject="src/main/java">
+            <!-- 是否允许子包, 即 targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="false"/>
+            <!-- 是否对类CHAR类型的列的数据进行 trim 操作 -->
+            <property name="trimStrings" value="false"/>
+            <!-- 建立的Model对象是否 不可改变 即生成的Model对象不会有 setter方法, 只有构造方法 -->
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+
+        <!-- Mapper映射文件生成所在的目录 数据库的表生成对应的Mapper -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!--
+            注意, 如果context是MyBatis3Simple: 只支持 ANNOTATEDMAPPER 和 XMLMAPPER
+            1. ANNOTATEDMAPPER: 生成Mapper接口 + Annotation形式 (SQL生成在Annotation中), 不会生成XML;
+            2. MIXEDMAPPER: 混合配置, 同时生成 XML 和 Annotation;
+            3. XMLMAPPER: 生成Mapper接口, 接口完全依赖 XML;
+        -->
+        <javaClientGenerator targetPackage="com.muscidae.parrot.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 需要生成的表名以及实体类命名 > -->
+        <table tableName="sys_config" domainObjectName="Config"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               enableInsert="false" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="false" enableDeleteByPrimaryKey="false" >
+            <!-- 实体类时是否使用实际列名作为实体类属性名, false: 驼峰命名 -->
+            <property name="useActualColumnNames" value="false" />
+        </table>
+
+    </context>
+</generatorConfiguration>
