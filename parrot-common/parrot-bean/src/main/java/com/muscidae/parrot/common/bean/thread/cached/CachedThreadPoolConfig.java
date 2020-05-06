@@ -21,15 +21,10 @@ public class CachedThreadPoolConfig {
     @Bean
     public Executor cachedThreadPool(CachedThreadPoolConfigProperties cachedThreadPoolConfigProperties) {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        //配置核心线程数
         taskExecutor.setCorePoolSize(cachedThreadPoolConfigProperties.getCorePoolSize());
-        //配置最大线程数
         taskExecutor.setMaxPoolSize(cachedThreadPoolConfigProperties.getMaxPoolSize());
-        //配置线程池中的线程的名称前缀
         taskExecutor.setThreadNamePrefix(cachedThreadPoolConfigProperties.getThreadNamePrefix());
-        //设置线程策略
-        taskExecutor.setRejectedExecutionHandler(cachedThreadPoolConfigProperties.getPolicy().getRejectedExecutionHandler());
-        //执行线程初始化
+        taskExecutor.setRejectedExecutionHandler(cachedThreadPoolConfigProperties.getRejectedExecution());
         taskExecutor.initialize();
         return Executors.newCachedThreadPool(taskExecutor);
     }

@@ -17,7 +17,7 @@ import java.sql.Timestamp;
  * @copyright ©2019
  * @description 持久化实体基类
  */
-@ApiModel(value = "持久化实体基类")
+@ApiModel(value = "persistent parent")
 @Getter
 @Setter
 @Accessors(chain = true)

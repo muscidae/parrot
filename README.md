@@ -15,8 +15,8 @@ spring cloud 技术整合
  - lombok-plugin
  - Mysql 5.7 +
  - Spring Boot 2.2.6.RELEASE
- - Spring Cloud Hoxton.RELEASE
- - Spring Cloud Alibaba 2.2.0.RELEASE
+ - Spring Cloud Hoxton.SR3
+ - Spring Cloud Alibaba 2.2.1.RELEASE
 
 #### 软件架构
 - 采用了Maven模块化搭建

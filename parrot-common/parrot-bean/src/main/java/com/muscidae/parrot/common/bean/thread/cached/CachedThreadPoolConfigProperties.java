@@ -1,11 +1,12 @@
 package com.muscidae.parrot.common.bean.thread.cached;
 
 import com.muscidae.parrot.common.bean.Properties;
-import com.muscidae.parrot.common.bean.thread.Policy;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.RejectedExecutionHandler;
 
 /**
  * @author muscidae
@@ -26,6 +27,6 @@ public class CachedThreadPoolConfigProperties implements Properties {
 
     private String threadNamePrefix;
 
-    private Policy policy;
+    private RejectedExecutionHandler rejectedExecution;
 
 }

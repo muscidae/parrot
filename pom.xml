@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
 
     <name>parrot</name>
-    <inceptionYear>2018</inceptionYear>
+    <inceptionYear>8102</inceptionYear>
     <url>https://gitee.com/muscidae/parrot</url>
     <description>
         May the Chinese youth get rid of the cold air,
@@ -71,15 +71,15 @@
         <!-- Parent Version -->
         <parrot.version>1.0.0-SNAPSHOT</parrot.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
 
         <!-- Dependency Version -->
         <apollo.version>1.4.0</apollo.version>
-        <mybatis-plus.version>3.3.0</mybatis-plus.version>
-        <fastjson.version>1.2.66</fastjson.version>
+        <mybatis-plus.version>3.3.1</mybatis-plus.version>
+        <fastjson.version>1.2.68</fastjson.version>
         <jjwt.version>0.9.1</jjwt.version>
-        <swagger.version>1.5.22</swagger.version>
+        <swagger.version>1.5.24</swagger.version>
         <springfox.version>2.9.2</springfox.version>
         <rocketmq.version>4.7.0</rocketmq.version>
 
@@ -348,6 +348,14 @@
 
     <build>
 
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -371,10 +379,14 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                    </configuration>
                     <executions>
                         <execution>
                             <goals>
                                 <goal>build-info</goal>
+                                <goal>repackage</goal>
                             </goals>
                         </execution>
                     </executions>

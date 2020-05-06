@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @copyright ©2019
  * @description ID 基类
  */
-@ApiModel(value = "ID 基类")
+@ApiModel(value = "id parent")
 @Getter
 @Setter
 @Accessors(chain = true)
